@@ -26,7 +26,7 @@ WHEN I click on the links in the Table of Contents
 * THEN I am taken to the corresponding section of the README
 
 ## GitHub
-GitHub username: jonzyuen</br>
+GitHub username: jonzyuen
 GitHub repository: [https://github.com/jonzyuen/07_README_Generator](https://github.com/jonzyuen/07_README_Generator)
 
 ## Questions

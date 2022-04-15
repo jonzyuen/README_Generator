@@ -1,9 +1,7 @@
-// TODO: Include packages needed for this application
 const fs = require('fs');
 const inquirer = require('inquirer');
 const generateMarkdown = require('./utils/generateMarkdown.js');
 
-// TODO: Create an array of questions for user input
 const questions = () => {
   return inquirer.prompt([
     {
@@ -104,17 +102,33 @@ const questions = () => {
       name: 'contributing',
       message: 'Enter the contribution information:'
     },
-    
     {
-      type: 'checkbox',
+      type: 'confirm',
+      name: 'confirmLicense',
+      message: 'Is this project under a license?',
+      default: true
+    },
+    {
+      type: 'list',
       name: 'license',
       message: 'Select the license your project is under:',
-      choices: ['MIT', 'GNU-3.0', 'Mozilla-Public-2.0', 'Apache-2.0']
+      choices: ['MIT', 'ISC License', 'GNU GPLv3', 'The Unlicense', 'Mozilla Public 2.0', 'Apache 2.0'],
+      when: ({confirmLicense}) => {
+        if (confirmLicense) {
+          return true;
+        } else {
+          return false;
+        }
+      }
     }
   ]);
 };
 
-// TODO: Create a function to write README file
+function mkdir() {
+  fs.mkdir('./dist', function(){
+  });
+};
+
 function writeToFile(answers, data) {
   fs.writeFile(answers, data, function(err) {
     if (err) {
@@ -123,11 +137,11 @@ function writeToFile(answers, data) {
   });
 };
 
-// TODO: Create a function to initialize app
 function init() {
+  mkdir();
   questions()
     .then(function(answers) {
-      writeToFile(`README ${Date.now()}.md`, generateMarkdown(answers));
+      writeToFile(`./dist/README ${Date.now()}.md`, generateMarkdown(answers));
     });
 };
 
