@@ -21,9 +21,6 @@ The app will create a dist directory where you will find the created README.
 ## Credits
 Jonathan Yuen
 
-## License
-This project is under the undefined license.</br>
-
 ## GitHub
 GitHub username: jonzyuen</br>
 GitHub repository: [https://github.com/jonzyuen/README_Generator](https://github.com/jonzyuen/README_Generator)
